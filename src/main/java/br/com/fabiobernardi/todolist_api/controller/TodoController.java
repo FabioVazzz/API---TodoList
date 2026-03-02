@@ -2,6 +2,7 @@ package br.com.fabiobernardi.todolist_api.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/todos")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TodoController {
     private TodoService todoService;
 
@@ -36,7 +38,7 @@ public class TodoController {
 
     @PutMapping
     List<Todo> uptade(@RequestBody Todo todo){
-        return todoService.uptade(todo);
+        return todoService.update(todo);
     }
 
     @DeleteMapping("{id}")
